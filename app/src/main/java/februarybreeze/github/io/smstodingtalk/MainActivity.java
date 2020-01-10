@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,40 +15,41 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("main", "into main: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preference = new Preferences(this);
 
-        String noticedToken = preference.getDingTalkNoticedToken();
-        if (!TextUtils.isEmpty(noticedToken)) {
-            TextView tokenView = (TextView) findViewById(R.id.noticedTokenView);
-            tokenView.setText(noticedToken);
+        String phone = preference.getPhone();
+        if (!TextUtils.isEmpty(phone)) {
+            TextView phoneView = (TextView) findViewById(R.id.textValuePhone);
+            phoneView.setText(phone);
         }
 
-        String notNoticedToken = preference.getDingTalkNotNoticedToken();
-        if (!TextUtils.isEmpty(notNoticedToken)) {
-            TextView notNoticedTokenView = (TextView) findViewById(R.id.notNoticedTokenView);
-            notNoticedTokenView.setText(notNoticedToken);
+        String email = preference.getEmail();
+        if (!TextUtils.isEmpty(email)) {
+            TextView emailView = (TextView) findViewById(R.id.textValueEmail);
+            emailView.setText(email);
         }
 
         startService(new Intent(getBaseContext(), MainService.class));
     }
 
-    public void setDingTalkNoticedToken(View view) {
-        EditText tokenText = (EditText) findViewById(R.id.tokenText);
-        String token = tokenText.getText().toString();
-        preference.setDingTalkNoticedToken(token);
+    public void setPhone(View view) {
+        EditText phone = (EditText) findViewById(R.id.textValue);
+        String value = phone.getText().toString();
+        preference.setPhone(value);
 
-        TextView tokenView = (TextView) findViewById(R.id.noticedTokenView);
-        tokenView.setText(token);
+        TextView tokenView = (TextView) findViewById(R.id.textValuePhone);
+        tokenView.setText(value);
     }
 
-    public void setDingTalkNotNoticedToken(View view) {
-        EditText tokenText = (EditText) findViewById(R.id.tokenText);
-        String token = tokenText.getText().toString();
-        preference.setDingTalkNotNoticedToken(token);
+    public void setEmail(View view) {
+        EditText email = (EditText) findViewById(R.id.textValue);
+        String value = email.getText().toString();
+        preference.setEmail(value);
 
-        TextView tokenView = (TextView) findViewById(R.id.notNoticedTokenView);
-        tokenView.setText(token);
+        TextView tokenView = (TextView) findViewById(R.id.textValueEmail);
+        tokenView.setText(value);
     }
 }

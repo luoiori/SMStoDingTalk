@@ -6,21 +6,23 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class MySingleton {
     private static MySingleton mInstance;
-    private static Context mCtx;
-    private RequestQueue requestQueue;
+    private Queue emailQueue;
 
     private MySingleton(Context context) {
-        mCtx = context;
-        requestQueue = getRequestQueue();
+        emailQueue = getRequestQueue();
     }
 
-    private RequestQueue getRequestQueue() {
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(mCtx.getApplicationContext());
+    private Queue getRequestQueue() {
+        if (emailQueue == null) {
+            emailQueue = new LinkedBlockingQueue();
         }
-        return requestQueue;
+        return emailQueue;
     }
 
     public static synchronized MySingleton getInstance(Context context) {
@@ -30,7 +32,7 @@ public class MySingleton {
         return mInstance;
     }
 
-    public <T> void addToRequestQueue(Request<T> request) {
-        requestQueue.add(request);
+    public <T> void addToRequestQueue(Email email) {
+        emailQueue.add(email);
     }
 }

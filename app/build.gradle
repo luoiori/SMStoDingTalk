@@ -5,7 +5,8 @@ android {
     defaultConfig {
         applicationId "februarybreeze.github.io.smstodingtalk"
         minSdkVersion 19
-        targetSdkVersion 26
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -16,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
@@ -26,4 +32,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.sun.mail:android-mail:1.6.2'
+    compile 'com.sun.mail:android-activation:1.6.2'
 }

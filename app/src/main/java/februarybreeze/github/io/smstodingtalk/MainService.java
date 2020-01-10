@@ -25,10 +25,12 @@ public class MainService extends Service {
         Log.d(TAG, "onCreate()");
     }
 
+    private Preferences preference;
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand()");
-
+        preference = new Preferences(this);
         Notification.Builder builder = new Notification.Builder(
                 this.getApplicationContext()
         );
@@ -38,11 +40,11 @@ public class MainService extends Service {
         ).setLargeIcon(BitmapFactory.decodeResource(
                 this.getResources(), R.mipmap.ic_launcher)
         ).setContentTitle(
-                "SMS-to-DingTalk"
+                "转发短信到邮箱"
         ).setSmallIcon(
                 R.mipmap.ic_launcher
         ).setContentText(
-                "Running"
+                "Running "+preference.getEmail()
         ).setWhen(
                 System.currentTimeMillis()
         );

@@ -10,19 +10,20 @@ public class Preferences {
         mPreference = context.getSharedPreferences(Constant.SETTING_FILE_NAME, Context.MODE_PRIVATE);
     }
 
-    public String getDingTalkNoticedToken() {
-        return mPreference.getString(Constant.Ding_Talk_Noticed_Robot_Token, "");
+    public String getPhone() {
+        return mPreference.getString(Constant.PHONE, "");
     }
 
-    public void setDingTalkNoticedToken(String token) {
-        mPreference.edit().putString(Constant.Ding_Talk_Noticed_Robot_Token, token).apply();
+    public void setPhone(String phone) {
+        mPreference.edit().putString(Constant.PHONE, phone).apply();
     }
 
-    public String getDingTalkNotNoticedToken() {
-        return mPreference.getString(Constant.Ding_Talk_Not_Noticed_Robot_Token, "");
+    public String getEmail() {
+        return mPreference.getString(Constant.EMAIL, "");
     }
 
-    public void setDingTalkNotNoticedToken(String token) {
-        mPreference.edit().putString(Constant.Ding_Talk_Not_Noticed_Robot_Token, token).apply();
+    public void setEmail(String email) {
+        mPreference.edit().putString(Constant.EMAIL, email).apply();
     }
+
 }

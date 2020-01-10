@@ -25,7 +25,7 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <service android:name=".DingTalkService"
+        <service android:name=".EmailService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.INTERNET" />

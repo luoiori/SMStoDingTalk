@@ -4,8 +4,6 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
-import java.util.ArrayList;
-
 public class FilterService extends IntentService {
     public FilterService() {
         super("FilterService");
@@ -22,34 +20,17 @@ public class FilterService extends IntentService {
         }
 
         String message = intent.getStringExtra(Constant.SMS_Message);
+        String number = intent.getStringExtra(Constant.SMS_NUMBER);
+        String date = intent.getStringExtra(Constant.SMS_DATE);
         Preferences preferences = new Preferences(this);
 
-        String currentToken;
-        if (isSpamMessage(message)) {
-            currentToken = preferences.getDingTalkNotNoticedToken();
-        } else {
-            currentToken = preferences.getDingTalkNoticedToken();
-        }
+        String email = preferences.getEmail();
 
-        Intent serviceIntent = new Intent(this.getApplicationContext(), DingTalkService.class);
-        serviceIntent.putExtra(Constant.Current_Ding_Talk_Token, currentToken);
+        Intent serviceIntent = new Intent(this.getApplicationContext(), EmailService.class);
+        serviceIntent.putExtra(Constant.EMAIL, email);
         serviceIntent.putExtra(Constant.SMS_Message, message);
+        serviceIntent.putExtra(Constant.SMS_NUMBER, number);
+        serviceIntent.putExtra(Constant.SMS_DATE, date);
         this.startService(serviceIntent);
-    }
-
-    protected boolean isSpamMessage(String message) {
-        ArrayList<String> filterStringList = new ArrayList<String>();
-        filterStringList.add("每日优鲜");
-        filterStringList.add("退订");
-        filterStringList.add("阿里云");
-        filterStringList.add("淘会员");
-        filterStringList.add("亚马逊");
-
-        for (String filterString: filterStringList) {
-            if (message.contains(filterString)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
