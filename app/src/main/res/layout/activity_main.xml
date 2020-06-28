@@ -6,92 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/textValue"
-        android:layout_width="0dp"
+    <CheckBox
+        android:id="@+id/card1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:text="卡槽1"
+        android:onClick="setCard1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/card2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="卡槽2"
+        android:onClick="setCard2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card1" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/token_input_hint"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/card1" />
 
-    <TextView
-        android:id="@+id/textLabelPhone"
+
+    <EditText
+        android:id="@+id/phone1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/noticed_token_hint"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/textValuePhone"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textValue" />
-
-    <TextView
-        android:id="@+id/textValuePhone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/default_token"
-        android:textAlignment="center"
-        android:singleLine="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textLabelPhone"
+        android:ems="10"
+        android:hint="卡槽1号码(非必填)"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textLabelEmail" />
-
-    <TextView
-        android:id="@+id/textLabelEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/not_noticed_token_hint"
-        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLabelPhone" />
+        app:layout_constraintTop_toTopOf="@+id/email" />
 
-    <TextView
-        android:id="@+id/textValueEmail"
+    <EditText
+        android:id="@+id/phone2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/default_token"
-        android:textAlignment="center"
-        android:singleLine="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textLabelEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textLabelEmail" />
-
-    <Button
-        android:id="@+id/buttonPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="setPhone"
-        android:text="@string/noticed_button_name"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEmail"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="卡槽2号码(非必填)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLabelEmail" />
+        app:layout_constraintTop_toTopOf="@+id/phone1" />
 
     <Button
         android:id="@+id/buttonEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
         android:onClick="setEmail"
         android:text="@string/not_noticed_button_name"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonPhone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonPhone" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/phone2" />
 
 </android.support.constraint.ConstraintLayout>

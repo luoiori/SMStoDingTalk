@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">短信转发邮箱</string>
-    <string name="noticed_button_name">设置卡槽</string>
-    <string name="not_noticed_button_name">设置邮箱</string>
-    <string name="token_input_hint">1,2表示卡槽12都转发</string>
-    <string name="noticed_token_hint">卡槽:</string>
-    <string name="not_noticed_token_hint">邮件:</string>
+    <string name="not_noticed_button_name">保存</string>
+    <string name="token_input_hint">邮箱</string>
     <string name="default_token">[空]</string>
 </resources>

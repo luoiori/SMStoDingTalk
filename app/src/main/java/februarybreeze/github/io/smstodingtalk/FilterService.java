@@ -22,6 +22,7 @@ public class FilterService extends IntentService {
         String message = intent.getStringExtra(Constant.SMS_Message);
         String number = intent.getStringExtra(Constant.SMS_NUMBER);
         String date = intent.getStringExtra(Constant.SMS_DATE);
+        String to = intent.getStringExtra(Constant.SMS_TO);
         Preferences preferences = new Preferences(this);
 
         String email = preferences.getEmail();
@@ -31,6 +32,7 @@ public class FilterService extends IntentService {
         serviceIntent.putExtra(Constant.SMS_Message, message);
         serviceIntent.putExtra(Constant.SMS_NUMBER, number);
         serviceIntent.putExtra(Constant.SMS_DATE, date);
+        serviceIntent.putExtra(Constant.SMS_TO, to);
         this.startService(serviceIntent);
     }
 }
